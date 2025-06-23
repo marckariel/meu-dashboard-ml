@@ -23,8 +23,8 @@ import webbrowser
 # =========================
 
 TOKEN_FILE = 'token_ml.json'
-CLIENT_ID = '5115237075438177' # Substitua se necessário
-CLIENT_SECRET = 'E84qpPe1KNR9FmaVabYOUumi9pCCJ6H2' # Substitua se necessário
+CLIENT_ID = os.getenv('ML_CLIENT_ID')
+CLIENT_SECRET = os.getenv('ML_CLIENT_SECRET')
 
 def load_token():
     if os.path.exists(TOKEN_FILE):
@@ -165,6 +165,7 @@ ids_mapeados = load_mapeados_ids()
 # =========================
 FA = "https://use.fontawesome.com/releases/v5.15.4/css/all.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUX, FA], suppress_callback_exceptions=True)
+server = app.server
 app.title = "Dashboard de Composições"
 
 app.layout = dbc.Container([
